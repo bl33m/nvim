@@ -5,6 +5,7 @@
             "filetypes": [
                 "c",
                 "cpp",
+                "c++",
                 "objc",
                 "objcpp"
             ],
@@ -20,6 +21,12 @@
                     "directory": "/tmp/ccls"
                 }
             }
+        }
+    },
+    "languageserver": {
+    "svls": {
+        "command": "svls",
+        "filetypes": ["systemverilog", "sv"]
         }
     }
 }
