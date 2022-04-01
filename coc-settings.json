@@ -28,6 +28,13 @@
         "command": "svls",
         "filetypes": ["systemverilog", "sv"]
         }
-    }
+    },
+    "asm-lsp": {
+    "command": "asm-lsp",
+    "filetypes": [
+        "asm", "s", "S"
+    ]
+    },
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }
 

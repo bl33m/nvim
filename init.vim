@@ -5,7 +5,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 " Make sure you use single quotes ''
  
 " autocomplete - deoplete 
-Plug 'Rip-Rip/clang_complete'
 
 " autocompletion (also a linter - diagnostics)
 
@@ -150,10 +149,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
 " indent via Tab
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
-vnoremap <Tab> >>_
-vnoremap <S-Tab> <<_
 
 " ================ Visualization ====================
  
@@ -263,7 +258,6 @@ set backspace=indent,eol,start
 noremap <leader><CR> :silent !gnome-terminal<CR>
 
 "disable preview window
-set completeopt-=preview
 
 
 " ================ Plugins ==========================
@@ -337,9 +331,6 @@ let g:clang_snippets_engine = 'ultisnips'
 " ################ Ale ##############################
  
 " autocompletion
-let g:ale_completion_enabled = 1
-
-let g:ale_cpp_clang_executable = 'clang++-5.0'
 
 " linter
 let b:ale_fix_on_save_ignore = {'py': ['torch']}
@@ -379,13 +370,6 @@ inoremap <F2> <ESC>:IH<CR>
 
 
 " ################ Easymotion #######################
- 
-" shift the keys 1 to the right so they match my jklč config
-map <leader><leader>j <Plug>(easymotion-linebackward)
-map <leader><leader>k <Plug>(easymotion-j)
-map <leader><leader>l <Plug>(easymotion-k)
-map <leader><leader>č <Plug>(easymotion-lineforward)
-
 
 " ################ CTAGS ############################
  
