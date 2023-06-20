@@ -4,18 +4,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 " Make sure you use single quotes ''
  
-" autocomplete - deoplete 
-
 " autocompletion (also a linter - diagnostics)
 
 " COC "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" autocomplete - roxma
-Plug 'roxma/ncm-clang'
- 
-" ale - linter / autocompletion / formatter
-Plug 'w0rp/ale'
 
 " auto formatter
 Plug 'rhysd/vim-clang-format'
@@ -27,7 +19,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-surround'
 
 " nerd commenter
-Plug 'scrooloose/nerdcommenter'
 
 " airline (powerline)
 Plug 'vim-airline/vim-airline'
@@ -67,6 +58,9 @@ Plug 'srcery-colors/srcery-vim'
 " glsl color
 Plug 'tikhomirov/vim-glsl'
 
+" sticky scroll
+Plug 'wellle/context.vim'
+
 " debugger
 "Plug 'critiqjo/lldb.nvim'
 
@@ -100,10 +94,8 @@ autocmd FileChangedShellPost *
 
 " ================ Folds ============================
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-
+set foldmethod=syntax   "fold based on indent
+set nofoldenable
 
 " ================ Srolling =========================
 
@@ -298,27 +290,8 @@ let g:NERDTreeQuitOnOpen = 1
 " show nerd tree always on the right instead on the left
 let g:NERDTreeWinPos = "right"
 
-" ################ UltiSnips ########################
-
-" make a dir Ultisnips in: '~/.config/nvim/UltiSnips/'
-" and put your snippets in there
-" eg. cpp.snippets
-
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsUsePythonVersion = 3
-
 
 " ################ Clang complete ###################
-
-let g:clang_use_library = 1
-let g:clang_library_path='/usr/lib/llvm-10/lib/'
-let g:clang_periodic_quickfix=1
-let g:clang_auto_select = 1
-
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'ultisnips'
 
 " I don't know how to change the keybindings to navigate
 " the 'completion suggestions menu' with ctrl+k and ctrl+l
@@ -328,19 +301,14 @@ let g:clang_snippets_engine = 'ultisnips'
 
 " ################ YouCompleteMe ####################
 
-" ################ Ale ##############################
  
-" autocompletion
 
-" linter
-let b:ale_fix_on_save_ignore = {'py': ['torch']}
-let b:syntastic_quiet_messages = {'py': ['torch']}
 
 " ################ Clang format #####################
  
 " Clang format - auto formatting
  
-let g:clang_format#command = 'clang-format-3.8'
+let g:clang_format#command = 'clang-format'
 let g:clang_format#style_options = {
             \ "BreakBeforeBraces" : "Attach",
             \ "UseTab" : "Never",
@@ -356,30 +324,10 @@ inoremap <C-j> <Esc>:ClangFormat<CR>a
 nnoremap <C-j> <Esc>:ClangFormat<CR>
 
 
-" ################ A ################################
  
-" A - switching between files
- 
-" header / source
-nnoremap <F4> :A<CR>
-inoremap <F4> <ESC>:A<CR>a
 
-" file under cursor
-nnoremap <F2> :IH<CR>
-inoremap <F2> <ESC>:IH<CR>
-
-
-" ################ Easymotion #######################
-
-" ################ CTAGS ############################
- 
-" TODO: learn more about this plugin and improve it
- 
-" change the stack pop to a more comfortable mapping
-nnoremap <C-e> <C-]>
-
-" CTAGS indexer
-let g:indexer_disableCtagsWarning = 1
+" ################ CONTEXT ############################
+let g:context_enabled = 1
 
 " ############### COC #######################AAAAAA
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
