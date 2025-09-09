@@ -1,40 +1,5 @@
 {
-    "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "c++",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                }
-            }
-        }
-    },
-    "languageserver": {
-    "svls": {
-        "command": "svls",
-        "filetypes": ["systemverilog", "sv"]
-        }
-    },
-    "asm-lsp": {
-    "command": "asm-lsp",
-    "filetypes": [
-        "asm", "s", "S"
-    ]
-    },
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd"
+    "clangd.path":
+        "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
+    "coc.source.vimtex.filetypes": ["tex", "plaintex", "latex"]
 }
-

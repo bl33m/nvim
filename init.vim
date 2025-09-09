@@ -65,7 +65,12 @@ Plug 'wellle/context.vim'
 "Plug 'critiqjo/lldb.nvim'
 Plug 'kevinhwang91/promise-async'
 
+
 Plug 'kevinhwang91/nvim-ufo'
+
+Plug 'lervag/vimtex'
+
+
 
 call plug#end()			
 
@@ -124,9 +129,9 @@ let mapleader = ','
 " clipboard
 " copy
 noremap <C-c> "+y
-" paste
+"" paste
 noremap <C-v> "+p
-" cut
+"" cut
 noremap <C-x> "+d
 " paste in insert mode
 inoremap <C-v> <Esc>"+pa
@@ -163,6 +168,15 @@ set shiftwidth=4
 set tabstop=4
 set smarttab
 set expandtab
+
+" ================ Indentation =====================
+set nowrap
+
+augroup TeXFileStuff
+    autocmd!
+    autocmd FileType tex setlocal wrap
+    autocmd FileType tex setlocal spell spelllang=en_us
+augroup END
 
 
 " ================ Number column ====================
@@ -235,8 +249,6 @@ set mat=0
 " When the last window will have a status line (2 = always)
 set laststatus=2
 
-" disable wrapping of long lines into multiple lines
-set nowrap
 
 " history
 set history=1000
@@ -302,9 +314,23 @@ let g:NERDTreeWinPos = "right"
 "inoremap <C-l> <Up>
 
 
-" ################ YouCompleteMe ####################
+" ################ VimTex ####################
 
- 
+
+let g:vimtex_view_method = 'zathura'
+"let g:vimtex_compiler_method = 'latexmk'
+
+let g:vimtex_compiler_latexmk = {
+  \ 'executable' : 'latexmk',
+  \ 'options' : [
+  \   '-xelatex',
+  \   '-file-line-error',
+  \   '-interaction=nonstopmode',
+  \   '-synctex=1'
+  \ ],
+\}
+
+let maplocalleader = ","
 
 
 " ################ Clang format #####################
