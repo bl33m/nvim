@@ -70,7 +70,8 @@ Plug 'kevinhwang91/nvim-ufo'
 
 Plug 'lervag/vimtex'
 
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()			
 
@@ -524,6 +525,52 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+" ############### FZF #######################AAAAAA
+
+" Open fzf in a nice floating window with a preview (Neovim 0.5+)
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'border': 'rounded' } }
+
+" Show preview (right side) for grep/files when available
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']   " toggle with Ctrl-/
+
+" Useful split actions from fzf
+let g:fzf_action = {
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-t': 'tabedit'
+  \ }
+
+" Jump to an already-open buffer when selecting it
+let g:fzf_buffers_jump = 1
+
+" Ripgrep is the default engine for :Rg if present
+" (Installs: sudo apt-get install ripgrep  OR  brew install ripgrep)
+" You can customize arguments like so:
+ 
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  command! -nargs=* Rg call fzf#vim#grep(
+        \ 'rg --column --line-number --no-heading --color=always --smart-case --hidden --glob "!.git/*" -- '.shellescape(<q-args>), 1,
+        \ fzf#vim#with_preview(), 0)
+endif
+
+" -------- Keymaps (feel free to change) --------
+nnoremap <leader>ff :Files<CR>          " fuzzy-find files (respects gitignore)
+nnoremap <leader>fg :Rg<CR>             " project-wide text search (ripgrep)
+nnoremap <leader>fb :Buffers<CR>        " open buffers
+nnoremap <leader>fh :Helptags<CR>       " help tags
+nnoremap <leader>fl :Lines<CR>          " search lines in all open buffers
+nnoremap <leader>fL :BLines<CR>         " search lines in current buffer
+nnoremap <leader>fc :Commands<CR>       " list ex-commands
+nnoremap <leader>fm :Marks<CR>          " marks
+nnoremap <leader>fr :History<CR>        " command/file search history
+
+" Git-aware pickers (if inside a git repo)
+nnoremap <leader>fs :GFiles?<CR>        " git-status files
+nnoremap <leader>ft :BTags<CR>          " tags in current buffer (ctags if used)
+
 
 lua << EOF
 vim.o.foldcolumn = '1' -- '0' is not bad
