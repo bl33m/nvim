@@ -1,7 +1,11 @@
 " ==================== VIM PLUG ==================
 
-call plug#begin('~/.config/nvim/autoload/plugged')
+if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
+  silent execute '!curl -fLo ' . stdpath('data') . '/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | qall
+endif
 
+call plug#begin(stdpath('data') . '/plugged')
 " Make sure you use single quotes ''
  
 " autocompletion (also a linter - diagnostics)
@@ -59,7 +63,7 @@ Plug 'srcery-colors/srcery-vim'
 Plug 'tikhomirov/vim-glsl'
 
 " sticky scroll
-Plug 'wellle/context.vim'
+" Plug 'wellle/context.vim'
 
 " debugger
 "Plug 'critiqjo/lldb.nvim'
@@ -219,7 +223,11 @@ nnoremap <F3> :set hlsearch!<CR>
 " ================ Performance ======================
 
 " fix slow scrolling that occurs when using mouse and relative numbers
-set lazyredraw
+"set lazyredraw
+
+set redrawtime=10000
+set updatetime=400         " fewer CursorHold events
+"set noshowmode
 " vim timeout (forgot why I need this or if I do at all)
 set ttyfast
 set ttimeoutlen=10
@@ -357,7 +365,8 @@ nnoremap <C-j> <Esc>:ClangFormat<CR>
  
 
 " ################ CONTEXT ############################
-let g:context_enabled = 1
+"let g:context_enabled = 1
+"let g:context_nvim_no_redraw = 1
 
 " ############### COC #######################AAAAAA
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
