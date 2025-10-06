@@ -1,0 +1,35 @@
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Vim/Neovim runtime state
+.swap
+*.[swp|swo|swn]
+Session.vim
+Session*
+tags
+*.log
+
+# netrw history
+.netrwhist
+
+# Neovim XDG state
+.cache/
+.state/
+tmp/
+undo/
+backup/
+
+# Plugin managers / builds
+plugin/packer_compiled.lua
+site/pack/**
+!site/pack/*/start/*/README*
+**/plugged/**
+**/lazy-lock.json  # keep lock if you adopt lazy.nvim
+**/.git/           # nested plugin repos
+
+# Tools noise
+node_modules/
+.mason/
+.venv/
+.python-version
