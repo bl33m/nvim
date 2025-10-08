@@ -77,6 +77,8 @@ Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" nvim v0.7.2
+Plug 'kdheepak/lazygit.nvim'
 call plug#end()			
 
 
@@ -565,6 +567,7 @@ if executable('rg')
         \ fzf#vim#with_preview(), 0)
 endif
 
+" 
 " -------- Keymaps (feel free to change) --------
 nnoremap <leader>ff :Files<CR>          " fuzzy-find files (respects gitignore)
 nnoremap <leader>fg :Rg<CR>             " project-wide text search (ripgrep)
@@ -580,6 +583,10 @@ nnoremap <leader>fr :History<CR>        " command/file search history
 nnoremap <leader>fs :GFiles?<CR>        " git-status files
 nnoremap <leader>ft :BTags<CR>          " tags in current buffer (ctags if used)
 
+
+" ############### LAZYGIT #######################
+" setup mapping to call :LazyGit
+nnoremap <silent> <leader>gg :LazyGit<CR>
 
 lua << EOF
 vim.o.foldcolumn = '1' -- '0' is not bad

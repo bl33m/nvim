@@ -4,3 +4,4 @@ Pyright
 clangd
 ripgrep
 node
+lazygit
